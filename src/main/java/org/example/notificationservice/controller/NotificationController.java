@@ -17,14 +17,10 @@ public class NotificationController {
     @PostMapping("/send")
     public void sendEmail(
             @RequestParam String email,
-            @RequestParam String type
+            @RequestParam String subject,
+            @RequestParam String text
+
     ) {
-        if ("create".equalsIgnoreCase(type)) {
-            emailService.sendEmail(email, "Создание аккаунта", "Здравствуйте! Ваш аккаунт на сайте был успешно создан.");
-        } else if ("delete".equalsIgnoreCase(type)) {
-            emailService.sendEmail(email, "Удаление аккаунта", "Здравствуйте! Ваш аккаунт был удалён.");
-        } else {
-            throw new UnknownTypeException("Unknown type: " + type);
-        }
+        emailService.sendEmail(email, subject, text);
     }
 }

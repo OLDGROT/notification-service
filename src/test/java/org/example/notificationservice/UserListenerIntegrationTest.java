@@ -29,7 +29,7 @@ class UserListenerIntegrationTest {
     @Test
     void shouldHandleUserCreateEvent() {
         // when
-        listener.handleUserCreate("user@test.com");
+        listener.UserHandle("user@test.com", "CREATE");
 
         // then
         ArgumentCaptor<SimpleMailMessage> captor = ArgumentCaptor.forClass(SimpleMailMessage.class);
@@ -40,7 +40,7 @@ class UserListenerIntegrationTest {
 
     @Test
     void shouldHandleUserDeleteEvent() {
-        listener.handleUserDelete("remove@test.com");
+        listener.UserHandle("remove@test.com", "DELETE");
 
         ArgumentCaptor<SimpleMailMessage> captor = ArgumentCaptor.forClass(SimpleMailMessage.class);
         verify(mailSender).send(captor.capture());
