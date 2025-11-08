@@ -19,7 +19,7 @@ public class DiscoveryClient {
     public void register() {
         ServiceInstance instance = new ServiceInstance(serviceName, "localhost", String.valueOf(port));
         webClient.post()
-                .uri("http://localhost:8084/discovery-service/register")
+                .uri("http://discovery-service/register")
                 .bodyValue(instance)
                 .retrieve()
                 .toBodilessEntity()
@@ -30,7 +30,7 @@ public class DiscoveryClient {
     public void heartbeat() {
         ServiceInstance instance = new ServiceInstance(serviceName, "localhost", String.valueOf(port));
         webClient.post()
-                .uri("http://localhost:8084/discovery-service/heartbeat")
+                .uri("http://discovery-service/heartbeat")
                 .bodyValue(instance)
                 .retrieve()
                 .toBodilessEntity()

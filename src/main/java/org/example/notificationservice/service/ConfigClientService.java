@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 public class ConfigClientService {
 
-    private final WebClient webClient = WebClient.create("http://localhost:8085");
+    private final WebClient webClient = WebClient.create("http://config-service:8085");
 
     public ServiceConfig fetchConfig(String serviceName) {
         return webClient.get()
