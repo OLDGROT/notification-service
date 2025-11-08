@@ -17,9 +17,9 @@ public class DiscoveryClient {
 
     @PostConstruct
     public void register() {
-        ServiceInstance instance = new ServiceInstance(serviceName, "localhost", String.valueOf(port));
+        ServiceInstance instance = new ServiceInstance(serviceName, "notification-service", String.valueOf(port));
         webClient.post()
-                .uri("http://localhost:8084/discovery-service/register")
+                .uri("http://discovery-service:8080/register")
                 .bodyValue(instance)
                 .retrieve()
                 .toBodilessEntity()
@@ -28,9 +28,9 @@ public class DiscoveryClient {
 
     @Scheduled(fixedRate = 10_000)
     public void heartbeat() {
-        ServiceInstance instance = new ServiceInstance(serviceName, "localhost", String.valueOf(port));
+        ServiceInstance instance = new ServiceInstance(serviceName, "notification-service", String.valueOf(port));
         webClient.post()
-                .uri("http://localhost:8084/discovery-service/heartbeat")
+                .uri("http://discovery-service:8080/heartbeat")
                 .bodyValue(instance)
                 .retrieve()
                 .toBodilessEntity()
