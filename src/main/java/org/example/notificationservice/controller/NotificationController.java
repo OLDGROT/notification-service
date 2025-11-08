@@ -20,4 +20,5 @@ public class NotificationController {
     ) {
         emailService.sendEmail(email, subject, text);
     }
+
 }
